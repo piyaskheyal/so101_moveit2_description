@@ -7,7 +7,7 @@ import xacro
 
 def generate_launch_description():
     robotXacroName='so101_new_calib'
-    namePackage='so101_moveit2'
+    namePackage='so101_moveit2_description'
     modelFileRelativePath='model/so101_new_calib.xacro'
     pathModelFile=os.path.join(get_package_share_directory(namePackage),modelFileRelativePath)
     
