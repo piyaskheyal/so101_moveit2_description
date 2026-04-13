@@ -22,7 +22,24 @@ def generate_launch_description():
         ],
     )
 
+    nodeRobotJointStatePublisher=Node(
+        package='joint_state_publisher',
+        executable='joint_state_publisher',
+        output='screen',
+    )
+
+    rvizConfigFile=os.path.join(get_package_share_directory(namePackage),'config/rviz_so101.rviz')
+    nodeRviz2=Node(
+        package='rviz2',
+        executable='rviz2',
+        output='screen',
+        arguments=['-d', rvizConfigFile],
+    )
+
+
     launchDescriptionObject=LaunchDescription()
     launchDescriptionObject.add_action(nodeRobotStatePublisher)
-    
+    launchDescriptionObject.add_action(nodeRobotJointStatePublisher)
+    launchDescriptionObject.add_action(nodeRviz2)
+
     return launchDescriptionObject
